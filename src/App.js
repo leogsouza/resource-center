@@ -20,7 +20,16 @@ class App extends Component {
 
   handleClose = () => this.setState({ open: false })
 
+  SideBarItem = ({ link, text, isExact }) => {
+    return (
+      <NavLink exact={isExact} to={link}>
+        <MenuItem onTouchTap={this.handleClose} primaryText={text} />
+      </NavLink>
+    )
+  }
+
   render () {
+    const SideBarItem = this.SideBarItem
     return (
       <BrowserRouter>
         <MuiThemeProvider muiTheme={getMuiTheme(fusTheme)}>
@@ -36,39 +45,17 @@ class App extends Component {
               docked={false}
               onRequestChange={open => this.setState({ open })}
             >
-              <NavLink exact to='/'>
-                <MenuItem onTouchTap={this.handleClose} primaryText='Home' />
-              </NavLink>
-              <NavLink to='/logos'>
-                <MenuItem onTouchTap={this.handleClose} primaryText='Logos' />
-              </NavLink>
-              <NavLink to='/posters'>
-                <MenuItem onTouchTap={this.handleClose} primaryText='Posters' />
-              </NavLink>
-              <NavLink to='/letterhead'>
-                <MenuItem
-                  onTouchTap={this.handleClose}
-                  primaryText='Letterhead'
-                />
-              </NavLink>
-              <NavLink to='/share-a-story'>
-                <MenuItem
-                  onTouchTap={this.handleClose}
-                  primaryText='Share a Story'
-                />
-              </NavLink>
-              <NavLink to='/service-request-form'>
-                <MenuItem
-                  onTouchTap={this.handleClose}
-                  primaryText='Service Request Form'
-                />
-              </NavLink>
-              <NavLink to='/tutorial'>
-                <MenuItem
-                  onTouchTap={this.handleClose}
-                  primaryText='Tutorial'
-                />
-              </NavLink>
+              <SideBarItem link='/' text='Home' isExact />
+              <SideBarItem link='/logos' text='Logos' isExact />
+              <SideBarItem link='/posters' text='Posters' isExact />
+              <SideBarItem link='/letterhead' text='Letterhead' isExact />
+              <SideBarItem link='/share-a-story' text='Share a Story' isExact />
+              <SideBarItem
+                link='/service-request-form'
+                text='Service Request Form'
+                isExact
+              />
+              <SideBarItem link='/Tutorial' text='Tutorial' isExact />
             </Drawer>
 
             <Route exact path='/' render={() => <h1>Home View</h1>} />
