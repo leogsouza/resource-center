@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import logo from './logo.svg';
 import './App.css'
+import './styles/materialize-grid.css'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
