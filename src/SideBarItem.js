@@ -8,8 +8,6 @@ class SideBarItem extends Component {
     this.state = { open: false }
   }
 
-  handClose = () => this.setState({ open: false })
-
   render () {
     return (
       <NavLink
@@ -17,7 +15,10 @@ class SideBarItem extends Component {
         to={this.props.linkTo}
         key={this.props.i}
       >
-        <MenuItem onTouchTap={this.handClose} primaryText={this.props.text} />
+        <MenuItem
+          onTouchTap={this.props.handleClose}
+          primaryText={this.props.primaryText}
+        />
       </NavLink>
     )
   }
