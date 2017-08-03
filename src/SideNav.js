@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
 import SideBarItem from './SideBarItem'
-import { List, makeSelectable } from 'material-ui/List'
+import { List } from 'material-ui/List'
 
 /*
 
@@ -26,37 +26,6 @@ const links = [
   { isExact: false, linkTo: '/tutorial', text: 'Tutorial' }
 ]
 
-let SelectableList = makeSelectable(List)
-
-function wrapState (ComposedComponent) {
-  return class SelectableList extends Component {
-    componentWillMount () {
-      this.setState({
-        selectedIndex: this.props.defaultValue
-      })
-    }
-
-    handleRequestChange = (event, index) => {
-      this.setState({
-        selectedIndex: index
-      })
-    }
-
-    render () {
-      return (
-        <ComposedComponent
-          value={this.state.selectedIndex}
-          onChange={this.handleRequestChange}
-        >
-          {this.props.children}
-        </ComposedComponent>
-      )
-    }
-  }
-}
-
-SelectableList = wrapState(SelectableList)
-
 class SideNav extends Component {
   constructor (props) {
     super(props)
@@ -79,7 +48,7 @@ class SideNav extends Component {
           docked={false}
           onRequestChange={open => this.setState({ open })}
         >
-          <SelectableList>
+          <List>
             {links.map((link, i) => {
               return (
                 <SideBarItem
@@ -91,7 +60,7 @@ class SideNav extends Component {
                 />
               )
             })}
-          </SelectableList>
+          </List>
         </Drawer>
       </div>
     )
