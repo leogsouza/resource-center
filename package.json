@@ -27,7 +27,7 @@
     "test-without-watch": "cross-env CI=true npm test",
     "eject": "react-scripts eject",
     "lint": "prettier 'src/**/*.js' '*.js' --write --single-quote --no-semi && standard --fix",
-    "precommit": "lint-staged && npm run test-without-watch"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.js": [
