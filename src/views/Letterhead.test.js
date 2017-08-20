@@ -17,8 +17,9 @@ describe('Letterhead Page', () => {
 
   it('has 4 images from placeimg.com', async () => {
     const page = visit('/letterhead')
-    const selector = '.letterhead-card img[src*="placeimg.com"]'
+    const selector = '.letterhead-card img[src*="unsplash.it"]'
     const letterheadCount = await page
+      .wait(selector)
       .evaluate(sel => document.querySelectorAll(sel).length, selector)
       .end()
 

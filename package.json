@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "cross-env": "^5.0.5",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.2",
     "prettier": "^1.5.3",
@@ -23,9 +24,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test-without-watch": "cross-env CI=true npm test",
     "eject": "react-scripts eject",
     "lint": "prettier 'src/**/*.js' '*.js' --write --single-quote --no-semi && standard --fix",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged && npm run test-without-watch"
   },
   "lint-staged": {
     "*.js": [

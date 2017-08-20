@@ -13,7 +13,6 @@ describe('Home Page', () => {
     const page = visit('/')
     const selector = '.container .col.s12.m4'
     const cardCount = await page
-      .wait(selector)
       .evaluate(sel => document.querySelectorAll(sel).length, selector)
       .end()
 
